@@ -8,7 +8,7 @@ class Details extends React.Component {
   render() {
     return (
       <div className={'Details'}>
-
+        Select a topic to view details
       </div>
     );
   }

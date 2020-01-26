@@ -1,0 +1,30 @@
+.TopicBrowser {
+    box-shadow: $boxShadow;
+    height: 100vh;
+    width: 30rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .createTopicWrapper {
+        width: calc(100%);
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #ecf0f5;
+
+        .createTopic {
+            width: 100%;
+        }
+    }
+
+    .TopicItem {
+        width: 100%;
+        height: 7.5rem;
+        border-bottom: 1px solid #ecf0f5;
+        cursor: pointer;
+
+        &.active {
+            background-color: $selected;
+        }
+    }
+}

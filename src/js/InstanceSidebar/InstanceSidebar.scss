@@ -1,0 +1,11 @@
+.InstanceSidebar {
+    height: 100vh;
+    width: 20rem;
+    background-color: #1a1f30;
+    z-index: 0;
+
+    .createInstance {
+        width: calc(100% - 4rem);
+        margin: 1rem 2rem;
+    }
+}
