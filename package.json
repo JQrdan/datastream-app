@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config ./webpack.dev.config.js",
-    "start": "run-p webpack:watch server:watch webpack:dev",
+    "server": "node server/index.js",
+    "start": "run-p dev server",
     "webpack:watch": "webpack --watch",
     "webpack:dev": "webpack-dev-server --hot --host 0.0.0.0",
     "server:watch": "nodemon dist/development/server/index.js --watch dist/development/server"
@@ -22,6 +23,8 @@
   },
   "homepage": "https://github.com/JQrdan/datastream-app#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "shards-react": "^1.0.3",

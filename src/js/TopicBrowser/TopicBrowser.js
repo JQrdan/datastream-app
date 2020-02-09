@@ -1,10 +1,31 @@
 import React from 'react';
+import axios from 'axios';
 import { Button } from "shards-react";
 import TopicItem from './TopicItem.js';
 
 class TopicBrowser extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      topics: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/topics').then(topics => {
+      this.setState({topics: topics.data});
+    });
+  }
+
+  renderTopics(topics) {
+    let topicJSX = [];
+
+    topics.forEach(topic => {
+      topicJSX.push(<TopicItem topicName={topic} key={topic} />)
+    });
+
+    return topicJSX;
   }
 
   render() {
@@ -14,9 +35,7 @@ class TopicBrowser extends React.Component {
           <Button outline pill className={'createTopic'}>Create new Topic</Button>
         </div>
 
-        <TopicItem topicName={'My Topic'} topicOffset={200}/>
-        <TopicItem active topicName={'My Topic 2'} topicOffset={15000}/>
-        <TopicItem topicName={'My Topic 3'} topicOffset={0}/>
+        {this.renderTopics(this.state.topics)}
       </div>
     );
   }

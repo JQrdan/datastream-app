@@ -8,9 +8,9 @@ class TopicItem extends React.Component {
 
   render() {
     return (
-      <div className={`${this.props.active ? 'active ' : ''}TopicItem`}>
+      <div className={`${this.props.active ? 'active ' : ''}TopicItem`} onClick={this.props.onClick}>
         <p className={'TopicName'}>{this.props.topicName}</p>
-        <p className={'TopicOffset'}>Latest offset: {this.props.topicOffset}</p>
+        {/* <p className={'TopicOffset'}>Latest offset: {this.props.topicOffset}</p> */}
       </div>
     );
   }
@@ -19,7 +19,8 @@ class TopicItem extends React.Component {
 TopicItem.propTypes = {
     topicName: PropTypes.string,
     topicOffset: PropTypes.number,
-    active: PropTypes.bool
+    active: PropTypes.bool,
+    onClick: PropTypes.func
 }
 
 export default TopicItem;
