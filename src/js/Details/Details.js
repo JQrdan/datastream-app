@@ -1,4 +1,5 @@
 import React from 'react';
+import PopularGenres from '../PopularGenres/PopularGenres.js';
 
 class Details extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Details extends React.Component {
   render() {
     return (
       <div className={'Details'}>
-        Select a topic to view details
+        <PopularGenres />
       </div>
     );
   }

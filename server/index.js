@@ -3,8 +3,7 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
-// const KAKFA_REST_ENDPOINT = 'http://kafkarest:8082'
-const KAKFA_REST_ENDPOINT = 'http://localhost:8082'
+const KAKFA_REST_ENDPOINT = 'http://kafkarest:8082'
 
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
