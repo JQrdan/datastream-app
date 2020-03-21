@@ -1,41 +1,41 @@
-import React from 'react';
-import kafka from 'kafka-node';
-import config from '../config.js';
+import React, {useState} from 'react';
+import axios from 'axios';
+import config from '../../../config/config.js';
 
-let client = new kafka.KafkaClient({ kafkaHost: config.KAFKA_SERVER });
-let topics = [{ topic: 'averages' }];
-let options = { autoCommit: false, fetchMaxWaitMs: 1000, fetchMaxBytes: 1024 * 1024 };
+let polling = false;
 
-let consumer = new kafka.Consumer(client, topics, options);
+const fetchGenres = (setGenres) => {
+  axios.get('http://localhost:3000/genres').then(response => {
+    if(response.data && response.data.genre_ratings) {
+      setGenres(response.data.genre_ratings);
+    }
+  });
+}
 
-let ratings = {};
+const PopularGenres = (props) => {
+  const [genreState, setGenres] = useState({});
 
-consumer.on('message', function (message) {
-    json = JSON.parse(message);
-    genre = json.genre;
-    ratings.genre = {
-        averageRating: json.averageRating,
-        numRatings: json.numRatings
-    };
-    console.log(ratings);
-});
+  if(!polling) {
+    console.log('setting interval');
+    setInterval(() => fetchGenres(setGenres, config.POLLING_RATE));
+    polling = true;
+  } 
 
-consumer.on('error', function (err) {
-  console.log(err);
-});
+  let jsx = [];
 
-export default PopularGenres = (props) => {
-    let jsx = [];
+  console.log(genreState)
 
-    ratings.entries((key, value) => {
-        jsx.push(
-            <div>
-                <h1>{key}</h1>
-                <p>{value.averageRating}</p>
-                <p>{value.numRatings}</p>
-            </div>
-        );
-    });
+  Object.entries(genreState).forEach(([key, value]) => {
+    jsx.push(
+      <div>
+        <h1>{key}</h1>
+        <p>{value.averageRating}</p>
+        <p>{value.numRatings}</p>
+      </div>
+    );
+  });
 
-    return jsx;
+  return jsx;
 };
+
+export default PopularGenres;
