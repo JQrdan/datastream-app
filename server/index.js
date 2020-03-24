@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const song_ratings = require('./SongConsumer.js');
+const top_songs = require('./SongConsumer.js');
 const genre_ratings = require('./GenreConsumer.js');
 const app = express();
 const port = 3000;
@@ -30,7 +30,7 @@ app.get('/genres', (_, res) => {
 })
 
 app.get('/songs', (_, res) => {
-  res.send(song_ratings);
+  res.send(top_songs);
 })
 
 app.listen(port, () => console.log(`UI proxy listening on port ${port}!`));

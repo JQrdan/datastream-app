@@ -2,40 +2,52 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import config from '../../../config/config.js';
 
-let polling = false;
-
-const fetchGenres = (setGenres) => {
-  axios.get('http://localhost:3000/genres').then(response => {
-    if(response.data && response.data.genre_ratings) {
-      setGenres(response.data.genre_ratings);
-    }
-  });
-}
-
 const PopularGenres = (props) => {
   const [genreState, setGenres] = useState({});
+  const [polling, setPolling] = useState(false);
 
   if(!polling) {
-    console.log('setting interval');
-    setInterval(() => fetchGenres(setGenres, config.POLLING_RATE));
-    polling = true;
+    const poll = setInterval(() => {
+      axios.get('http://localhost:3000/genres').then(response => {
+        if(response.data && response.data.genre_ratings) {
+          let ratings = Object.entries(response.data.genre_ratings).sort(([k1, v1], [k2, v2]) => {
+            return v2.averageRating - v1.averageRating;
+          });
+
+          setGenres(ratings);
+        }
+      });
+    }, config.POLLING_RATE);
+    setPolling(poll);
   } 
+
+  let header = <tr>
+    <th>Genre</th>
+    <th>Average Rating</th>
+    <th>Number of Ratings</th>
+  </tr>;
 
   let jsx = [];
 
-  console.log(genreState)
-
-  Object.entries(genreState).forEach(([key, value]) => {
+  Object.entries(genreState).forEach(([_, [key, value]]) => {
     jsx.push(
-      <div>
-        <h1>{key}</h1>
-        <p>{value.averageRating}</p>
-        <p>{value.numRatings}</p>
-      </div>
+      <tr key={key}>
+        <td>{key}</td>
+        <td>{Math.round(value.averageRating * 100) / 100}</td>
+        <td>{value.numRatings}</td>
+      </tr>
     );
   });
 
-  return jsx;
+  return (
+    <div className={'PopularGenres'}>
+      <h1>Genres by rating</h1>
+      <table className={'resultsTable'}>
+        {header}
+        {jsx}
+      </table>
+    </div>
+  );
 };
 
 export default PopularGenres;

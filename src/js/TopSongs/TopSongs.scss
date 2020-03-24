@@ -1,0 +1,11 @@
+.TopSongs {
+  height: 100vh;
+  overflow-y: scroll;
+  box-shadow: $boxShadow;
+  padding: 1rem;
+  z-index: 3;
+
+  .resultsTable {
+    width: 100%;
+  }
+}

@@ -1,11 +1,12 @@
 import React from 'react';
-import InstanceSidebar from './InstanceSidebar/InstanceSidebar.js';
 import TopicBrowser from './TopicBrowser/TopicBrowser.js';
-import Details from './Details/Details.js';
 
 import '../scss/index.scss';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
+
+import PopularGenres from './PopularGenres/PopularGenres.js';
+import TopSongs from './TopSongs/TopSongs.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,9 +16,9 @@ class App extends React.Component {
   render() {
     return (
       <div className={'App'}>
-        <InstanceSidebar />
         <TopicBrowser />
-        <Details />
+        <PopularGenres />
+        <TopSongs />
       </div>
     );
   }

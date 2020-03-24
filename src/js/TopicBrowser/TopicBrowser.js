@@ -31,10 +31,7 @@ class TopicBrowser extends React.Component {
   render() {
     return (
       <div className={'TopicBrowser'}>
-        <div className={'createTopicWrapper'}>
-          <Button outline pill className={'createTopic'}>Create new Topic</Button>
-        </div>
-
+        <h1>Topics</h1>
         {this.renderTopics(this.state.topics)}
       </div>
     );
