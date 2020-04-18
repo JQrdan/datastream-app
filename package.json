@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/JQrdan/datastream-app#readme",
   "dependencies": {
+    "@elastic/elasticsearch": "^7.6.1",
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "kafka-node": "^5.0.0",

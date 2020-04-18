@@ -1,0 +1,55 @@
+.IndexBrowser {
+    padding: .5rem;
+
+    .prevButton {
+        margin-right: .5rem;
+    }
+
+    .form-control {
+        background-color: #1e1e1e;
+        color: white;
+        border: 1px solid #212121;
+
+        &:focus {
+            background-color: #1e1e1e;
+            color: white;
+            border: 1px solid #212121;
+        }
+    }
+
+    .controlGroup {
+        margin-right: .5rem;
+    }
+
+    .controls {
+        display: flex;
+    }
+
+    p {
+        margin-right: .5rem;
+        margin-bottom: 0;
+        color: white;
+    }
+
+    .indexSearchSelection {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .records {
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
+        min-height: 10rem;
+        padding: 1rem 0;
+    }
+
+    .record {
+        margin-bottom: .5rem;
+        margin-right: .5rem;
+        cursor: pointer;
+        padding: .5rem;
+        background-color: #1e1e1e;
+    }
+}

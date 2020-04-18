@@ -7,6 +7,7 @@ import "shards-ui/dist/css/shards.min.css"
 
 import PopularGenres from './PopularGenres/PopularGenres.js';
 import TopSongs from './TopSongs/TopSongs.js';
+import IndexBrowser from './IndexBrowser/IndexBrowser.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,9 +17,10 @@ class App extends React.Component {
   render() {
     return (
       <div className={'App'}>
-        <TopicBrowser />
+        {/* <TopicBrowser />
         <PopularGenres />
-        <TopSongs />
+        <TopSongs /> */}
+        <IndexBrowser />
       </div>
     );
   }

@@ -5,6 +5,9 @@
 
 .App {
   display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: #121212;
 }
 
 $boxShadow: -6px 2px 10px -6px rgba(0,0,0,0.75);
@@ -13,3 +16,4 @@ $selected: #f4f7fb;
 @import "../js/TopicBrowser/TopicBrowser.scss";
 @import "../js/PopularGenres/PopularGenres.scss";
 @import "../js/TopSongs/TopSongs.scss";
+@import "../js/IndexBrowser/IndexBrowser.scss";
