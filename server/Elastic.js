@@ -1,8 +1,9 @@
+const config = require('../config/config.js');
 const {
   Client
 } = require('@elastic/elasticsearch');
 const client = new Client({
-  node: 'http://es01:9200'
+  node: `http://es01:${config.ELASTIC_PORT}`
 });
 
 const PAGE_SIZE = 50;

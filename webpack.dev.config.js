@@ -45,8 +45,5 @@ module.exports = {
 	devServer: {
 			contentBase: parentDir,
 			historyApiFallback: true
-  },
-  node: {
-    net: 'empty',
   }
 }

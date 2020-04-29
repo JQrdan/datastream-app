@@ -1,12 +1,8 @@
 const express = require('express');
 const axios = require('axios');
-// const top_songs = require('./SongConsumer.js');
-// const genre_ratings = require('./GenreConsumer.js');
 const { searchViaRating, searchViaID } = require('./Elastic.js');
 const app = express();
 const port = 3000;
-
-const KAKFA_REST_ENDPOINT = 'http://kafkarest:8082'
 
 var allowCrossDomain = function(_, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
@@ -51,13 +47,5 @@ app.get('/elastic/:index/:id', async (req, res) => {
     }
   );
 });
-
-// app.get('/genres', (_, res) => {
-//   res.send(genre_ratings);
-// })
-
-// app.get('/songs', (_, res) => {
-//   res.send(top_songs);
-// })
 
 app.listen(port, () => console.log(`UI proxy listening on port ${port}!`));
